@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "VEW"
+    }
+  },
+  "defaultProject": "VEW",
+  "cli": {
+    "analytics": false
+  }
 }
