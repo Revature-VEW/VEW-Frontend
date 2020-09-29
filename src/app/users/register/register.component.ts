@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const newUserForm = JSON.stringify(this.registration);
+    const newUserForm = JSON.stringify(this.registration.value);
     this.userService.registerUser(newUserForm).subscribe(
       response => {
         // TODO: if this returns a user with id send to login page

@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -27,6 +28,7 @@ import { QuestionsModule } from './questions/questions.module';
     SearchModule,
     QuestionsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AngularMaterialModule,
     FlexLayoutModule
   ],
