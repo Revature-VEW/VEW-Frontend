@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AngularMaterialModule } from '../angular-material.module';
@@ -14,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule
   ],
