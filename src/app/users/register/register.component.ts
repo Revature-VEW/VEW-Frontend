@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,6 +10,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  error = true;
   registration = this.formBuilder.group({
     email: [null, Validators.required],
     password: [null, Validators.required],
@@ -28,6 +30,13 @@ export class RegisterComponent implements OnInit {
         // TODO: if this returns a user with id send to login page
         // otherwise have error that has them resubmit information
         console.log(response);
+      }, error => {
+        console.log(error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 406) {
+            console.log(error.error);
+          }
+        }
       }
     );
   }
