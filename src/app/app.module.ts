@@ -13,6 +13,12 @@ import { AngularMaterialModule } from './angular-material.module';
 import { UsersModule } from './users/users.module';
 import { SearchModule } from './search/search.module';
 import { QuestionsModule } from './questions/questions.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -30,7 +36,13 @@ import { QuestionsModule } from './questions/questions.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

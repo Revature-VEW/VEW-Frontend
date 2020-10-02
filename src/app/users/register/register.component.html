@@ -1,6 +1,9 @@
 <dialog *ngIf="error">
     Test
 </dialog>
+
+<br>
+
 <mat-card id="card">
     <div class="center-align">
         <mat-card-title>
@@ -11,8 +14,11 @@
     <mat-card-content>
         <form [formGroup]="registration" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" placeholder="Email" formControlName="email" required>
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="Email" formControlName="email" email="true" required>
+              <mat-error *ngIf="!registration.valid">
+                  Email is invalid.
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Password</mat-label>
@@ -29,6 +35,6 @@
             <div class="center-align">
                 <button mat-raised-button color="primary" [disabled]="!registration.valid" id="registration-button">Register</button>
             </div>
-        </form>       
+        </form>
     </mat-card-content>
 </mat-card>

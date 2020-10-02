@@ -1,12 +1,13 @@
 <!-- Toolbar -->
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <!--  <span>HOME</span> -->
-        <span><a href="" id="navbar-home">VEW</a></span>
-        <span class="spacer"></span>
-        <a mat-button routerLink="/users/register">Register</a>
-        <a mat-button routerLink="/login">Login</a>
-    </mat-toolbar-row>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <!--  <span>HOME</span> -->
+    <span><a href="" id="navbar-home">VEW</a></span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/users/register">Register</a>
+    <a mat-button routerLink="/login">Login</a>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
