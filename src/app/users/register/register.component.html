@@ -1,0 +1,39 @@
+<mat-toolbar color="accent" *ngIf="errorExists">
+    <mat-toolbar-row>
+        {{ errorMessage }}
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-card id="card">
+    <div class="center-align">
+        <mat-card-title>
+            Register
+        </mat-card-title>
+    </div>
+
+    <mat-card-content>
+        <form [formGroup]="registration" (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" formControlName="email" email="true" required>
+                <mat-error *ngIf="!registration.valid">
+                    Email is invalid.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstName" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastName" required>
+            </mat-form-field>
+            <div class="center-align">
+                <button mat-raised-button color="primary" [disabled]="!registration.valid" id="registration-button">Register</button>
+            </div>
+        </form>       
+    </mat-card-content>
+</mat-card>
