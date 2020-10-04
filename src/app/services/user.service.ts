@@ -22,4 +22,14 @@ export class UserService {
     };
     return this.httpClient.post<User>(this.userUrl, newUserForm, httpHead);
   }
+
+  loginUser(userForm): Observable<User> {
+    const httpHead = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Orgin': '*'
+      })
+    };
+    return this.httpClient.post<User>(`${this.userUrl}/login`, userForm, httpHead);
+  }
 }
