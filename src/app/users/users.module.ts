@@ -8,9 +8,10 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 @NgModule({
-  declarations: [UsersComponent, RegisterComponent, LoginComponent],
+  declarations: [UsersComponent, RegisterComponent, LoginComponent, UserHomepageComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

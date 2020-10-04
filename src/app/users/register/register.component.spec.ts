@@ -37,9 +37,9 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Form invalid should be true when form is invalid', (() => {
+  it('form invalid should be true when form is invalid', () => {
     expect(component.registration.invalid).toBeTruthy();
-  }));
+  });
 
   it('should disable Register button if validators not met', () => {
     const compiledElements = fixture.nativeElement;
@@ -61,7 +61,7 @@ describe('RegisterComponent', () => {
     expect(registrationButton.getAttribute('disabled')).toEqual(null);
   });
 
-  it('userService register() should be called ', () => {
+  it('userService register() should be called', () => {
     component.registration = formBuilder.group({
       email: 'test@host.com',
       password: 'test',

@@ -39,9 +39,26 @@ describe('UserService', () => {
     );
 
     const req = httpMock.expectOne(`${environment.apiUrl}user`);
-
     expect(req.request.method).toEqual('POST');
+    req.flush(mockUser);
+  });
 
+  it('should login user', () => {
+    const mockUser = {
+      userId: 1,
+      email: 'testone@host.com',
+      firstName: 'Test',
+      lastName: 'One'
+    };
+
+    service.loginUser('').subscribe(
+      returnedUser => {
+        expect(returnedUser.email).toEqual('testone@host.com');
+      }
+    );
+
+    const req = httpMock.expectOne(`${environment.apiUrl}user/login`);
+    expect(req.request.method).toEqual('POST');
     req.flush(mockUser);
   });
 });
