@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { __param } from 'tslib';
-import { ActivatedRouteStub } from '../testing/activated-route-stub';
 
 import { CorrectUserGuard } from './correct-user.guard';
 
