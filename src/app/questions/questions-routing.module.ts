@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddQuestionComponent } from './add-question/add-question.component';
 
 import { QuestionsComponent } from './questions.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 import { UserGuard } from '../guards/user.guard';

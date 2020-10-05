@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/models/user';
 
+import { User } from 'src/app/models/user';
 import { QuestionService } from '../../services/question.service';
 
 @Component({

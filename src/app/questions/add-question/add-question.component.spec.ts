@@ -1,13 +1,13 @@
-import { _ParseAST } from '@angular/compiler';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AddQuestionComponent } from './add-question.component';
 import { Question } from 'src/app/models/question';
 import { QuestionService } from 'src/app/services/question.service';
 import { asyncData } from 'src/app/testing/async-observable-helpers';
 
-import { AddQuestionComponent } from './add-question.component';
 
 describe('AddQuestionComponent', () => {
   let component: AddQuestionComponent;
