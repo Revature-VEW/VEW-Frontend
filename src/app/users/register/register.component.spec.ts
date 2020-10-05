@@ -83,7 +83,6 @@ describe('RegisterComponent', () => {
       error: 'Test 406 Error'
     };
     const thrownError = registerUserServiceSpy.registerUser.and.returnValue(asyncError(testError));
-    console.log(thrownError);
     component.onSubmit();
     expect(registerUserServiceSpy.registerUser).toHaveBeenCalled();
     tick();

@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
 export class RegisterComponent implements OnInit, OnDestroy {
   errorExists: boolean;
   errorMessage = '';
-  registerUserSubscription: Subscription = new Subscription();
+  registerUserSubscription: Subscription;
   registration = this.formBuilder.group({
     email: [null, Validators.required],
     password: [null, Validators.required],
@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.errorExists = false;
+    this.registerUserSubscription = new Subscription();
   }
 
   onSubmit(): void {
