@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   errorExists: boolean;
-  errorMessage = '';
+  errorMessage: string;
   loginUserSubscription: Subscription = new Subscription();
   login = this.formBuilder.group({
     email: [null, Validators.required],
@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.errorExists = false;
+    if (JSON.parse(localStorage.getItem('errorMessage')) != null) {
+      this.errorExists = true;
+      this.errorMessage = JSON.parse(localStorage.getItem('errorMessage'));
+    }
   }
 
   onSubmit(): void {
@@ -41,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loginUserSubscription.unsubscribe();
+    localStorage.setItem('errorMessage', null);
     console.log('LoginComponent destroyed');
   }
 }

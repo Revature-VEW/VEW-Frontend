@@ -6,6 +6,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
+import { UserGuard } from '../guards/user.guard';
+import { CorrectUserGuard } from '../guards/correct-user.guard';
+
 const routes: Routes = [
   {
     path: 'register',
@@ -16,8 +19,9 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: ':id',
-    component: UserHomepageComponent
+    path: ':userId',
+    component: UserHomepageComponent,
+    canActivate: [UserGuard, CorrectUserGuard]
   },
   {
     path: '',
