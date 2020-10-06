@@ -1,0 +1,13 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span><a href="" id="navbar-home">VEW</a></span>
+    <span class="spacer"></span>
+    <a *ngIf="!isLoggedIn()" mat-button routerLink="/users/register">Register</a>
+    <a *ngIf="!isLoggedIn()" mat-button routerLink="/users/login">Login</a>
+    <a *ngIf="isLoggedIn()" mat-button routerLink="/questions/ask">Ask Question</a>
+    <a *ngIf="isLoggedIn()" mat-button [routerLink]="['/users/', userId]">Profile</a>
+    <a *ngIf="isLoggedIn()" mat-button routerLink=""(click)="logout()">Logout</a>
+</mat-toolbar>
