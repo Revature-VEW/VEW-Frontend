@@ -10,16 +10,20 @@ import { Question } from '../models/question';
 })
 export class QuestionService {
   questionUrl = `${environment.apiUrl}question`;
+  httpHead = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Orgin': '*'
+    })
+  };
 
   constructor(private httpClient: HttpClient ) { }
 
-  addQuestion(questionForm): Observable<Question> {
-    const httpHead = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Orgin': '*'
-      })
-    };
-    return this.httpClient.post<Question>(this.questionUrl, questionForm, httpHead);
+  addQuestion(questionForm): Observable<Question> {    
+    return this.httpClient.post<Question>(this.questionUrl, questionForm, this.httpHead);
+  }
+
+  getQuestionByQuestionId(questionId: number): Observable<Question> {
+    return this.httpClient.get<Question>(`${this.questionUrl}/${questionId}`, this.httpHead);
   }
 }

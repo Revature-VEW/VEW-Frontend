@@ -7,6 +7,8 @@ export class Question {
     approved?: boolean;
     totalUpvotes?: number;
     totalDownvotes?: number;
+    creationDate?: Date;
+    lastModifiedDate?: Date;
     user?: User;
     tags?: Tag[];
 }

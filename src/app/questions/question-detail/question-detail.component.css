@@ -1,0 +1,30 @@
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 8px 8px 8px 4px rgba(0, 0, 0, 0.2), 10px 10px 7px 0px rgba(0, 0, 0, 0.14), 10px 10px 0px 0px rgba(0, 0, 0, 0.12);
+}
+
+#card {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.tag-chip {
+    transform: scale(0.9);
+}
+
+.no-margins {
+    margin: 0px;
+}
