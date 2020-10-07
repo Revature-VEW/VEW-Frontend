@@ -12,7 +12,15 @@ import { asyncData } from 'src/app/testing/async-observable-helpers';
 describe('AddQuestionComponent', () => {
   let component: AddQuestionComponent;
   let fixture: ComponentFixture<AddQuestionComponent>;
-  let expectedQuestion: Question;
+  const expectedQuestion: Question = {
+    questionId: 13,
+    question: 'Why is Dakota?',
+    user: {
+      userId: 1,
+      firstName: 'Admin',
+      lastName: 'Power'
+    }
+  };
   const questionServiceSpy = jasmine.createSpyObj('QuestionService', ['addQuestion']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   const formBuilder: FormBuilder = new FormBuilder();
@@ -33,6 +41,7 @@ describe('AddQuestionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddQuestionComponent);
     component = fixture.componentInstance;
+    questionServiceSpy.addQuestion.and.returnValue(asyncData(expectedQuestion));
     fixture.detectChanges();
   });
 
@@ -86,17 +95,6 @@ describe('AddQuestionComponent', () => {
   });
 
   it('should redirect to question detail page after success', fakeAsync(() => {
-    expectedQuestion = {
-      questionId: 13,
-      question: 'Why is Dakota?',
-      user: {
-        userId: 1,
-        firstName: 'Admin',
-        lastName: 'Power'
-      }
-    };
-
-    questionServiceSpy.addQuestion.and.returnValue(asyncData(expectedQuestion));
     component.onSubmit();
     tick();
     expect(routerSpy.navigate.calls.any()).toBe(true, 'Router.navigate called');

@@ -9,5 +9,5 @@
     <a *ngIf="!isLoggedIn()" mat-button routerLink="/users/login">Login</a>
     <a *ngIf="isLoggedIn()" mat-button routerLink="/questions/ask">Ask Question</a>
     <a *ngIf="isLoggedIn()" mat-button [routerLink]="['/users/', userId]">Profile</a>
-    <a *ngIf="isLoggedIn()" mat-button routerLink=""(click)="logout()">Logout</a>
+    <a *ngIf="isLoggedIn()" mat-button routerLink="" (click)="logout()">Logout</a>
 </mat-toolbar>

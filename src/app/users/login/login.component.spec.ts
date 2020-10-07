@@ -8,10 +8,15 @@ import { LoginComponent } from './login.component';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 
-describe('LoginComponent', () => {
+describe('LoginComponent - no error message', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let expectedUser: User;
+  const expectedUser: User = {
+    userId: 1,
+    email: 'test@host.com',
+    firstName: 'Test',
+    lastName: 'One'
+  };
   const userServiceSpy = jasmine.createSpyObj('UserService', ['loginUser']);
   const formBuilder: FormBuilder = new FormBuilder();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -32,6 +37,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    userServiceSpy.loginUser.and.returnValue(asyncData(expectedUser));
     fixture.detectChanges();
   });
 
@@ -77,14 +83,6 @@ describe('LoginComponent', () => {
   });
 
   it('should redirect to user homepage after success', fakeAsync(() => {
-    expectedUser = {
-      userId: 1,
-      email: 'test@host.com',
-      firstName: 'Test',
-      lastName: 'One'
-    };
-
-    userServiceSpy.loginUser.and.returnValue(asyncData(expectedUser));
     component.onSubmit();
     tick();
     expect(routerSpy.navigate.calls.any()).toBe(true, 'Router.navigate called');
@@ -103,4 +101,50 @@ describe('LoginComponent', () => {
     expect(component.errorExists).toBe(true);
     expect(component.errorMessage).toBe('A User with that Email does not exist.');
   }));
+});
+
+describe('LoginComponent - error message', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
+  const expectedUser: User = {
+    userId: 1,
+    email: 'test@host.com',
+    firstName: 'Test',
+    lastName: 'One'
+  };
+  const userServiceSpy = jasmine.createSpyObj('UserService', ['loginUser']);
+  const formBuilder: FormBuilder = new FormBuilder();
+  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ LoginComponent ],
+      imports: [ ReactiveFormsModule ],
+      providers: [
+        {provide: UserService, useValue: userServiceSpy},
+        {provide: Router, useValue: routerSpy}
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    const errorMessage = 'There is a problem';
+    localStorage.setItem('errorMessage', JSON.stringify(errorMessage));
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    userServiceSpy.loginUser.and.returnValue(asyncData(expectedUser));
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('it should display error from local storage', () => {
+    fixture.detectChanges();
+    expect(component.errorExists).toBe(true);
+    expect(component.errorMessage).toBe('There is a problem');
+  });
 });

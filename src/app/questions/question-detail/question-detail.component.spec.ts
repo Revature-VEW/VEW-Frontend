@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, ActivatedRouteStub } from '../../testing/activated-route-stub';
 import { Question } from 'src/app/models/question';
-import { User } from 'src/app/models/user';
 
 import { QuestionDetailComponent } from './question-detail.component';
 import { QuestionService } from 'src/app/services/question.service';
