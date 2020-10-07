@@ -1,1 +1,33 @@
-<p>question-detail works!</p>
+<mat-card id="card">
+    <mat-card-header>
+        <div class="full-width">
+        <mat-card-title id="title">{{ currentQuestion.question }}</mat-card-title>
+        <mat-card-subtitle id="subtitle">
+            <mat-chip-list aria-label="Question Tags">
+                <mat-chip color="primary" selected class="tag-chip">Tags</mat-chip>
+                <mat-chip color="primary" selected class="tag-chip">will</mat-chip>
+                <mat-chip color="primary" selected class="tag-chip">go</mat-chip>
+                <mat-chip color="primary" selected class="tag-chip">here</mat-chip>
+            </mat-chip-list>
+            <p class="right-align no-margins">Asked: {{ currentQuestion.creationDate | date }}</p>
+            <p class="right-align no-margins" id="author">By: {{ currentQuestionAuthor.firstName }} {{ currentQuestionAuthor.lastName }}</p>
+        </mat-card-subtitle>
+        </div>
+    </mat-card-header>
+    <hr id="question-hr">
+    <mat-card-content>
+        <p>
+            Comment One
+        </p>
+        <p>
+            Comment Two
+        </p>
+        <p>
+            Comment Three
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>
