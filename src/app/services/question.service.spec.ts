@@ -42,4 +42,23 @@ describe('QuestionService', () => {
     expect(req.request.method).toEqual('POST');
     req.flush(mockQuestion);
   });
+
+  it('should get question by id', () => {
+    const mockQuestion = {
+      questionId: 2,
+      question: 'What is Java?',
+      totalUpvotes: 0,
+      totalDownvotes: 0
+    };
+
+    service.getQuestionByQuestionId(2).subscribe(
+      returnedQuestion => {
+        expect(returnedQuestion.questionId).toEqual(2);
+      }
+    );
+
+    const req = httpMock.expectOne(`${environment.apiUrl}question/2`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockQuestion);
+  });
 });

@@ -2,7 +2,7 @@
     <mat-card-header>
         <div class="full-width">
         <mat-card-title id="title">{{ currentQuestion.question }}</mat-card-title>
-        <mat-card-subtitle>
+        <mat-card-subtitle id="subtitle">
             <mat-chip-list aria-label="Question Tags">
                 <mat-chip color="primary" selected class="tag-chip">Tags</mat-chip>
                 <mat-chip color="primary" selected class="tag-chip">will</mat-chip>
@@ -10,7 +10,7 @@
                 <mat-chip color="primary" selected class="tag-chip">here</mat-chip>
             </mat-chip-list>
             <p class="right-align no-margins">Asked: {{ currentQuestion.creationDate | date }}</p>
-            <p class="right-align no-margins">By: {{ currentQuestion.user.firstName }} {{ currentQuestion.user.lastName }}</p>
+            <p class="right-align no-margins" id="author">By: {{ currentQuestionAuthor.firstName }} {{ currentQuestionAuthor.lastName }}</p>
         </mat-card-subtitle>
         </div>
     </mat-card-header>

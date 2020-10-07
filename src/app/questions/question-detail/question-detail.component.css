@@ -17,6 +17,10 @@
     margin-bottom: 20px;
 }
 
+#subtitle {
+    margin-bottom: 0px;
+}
+
 .right-align {
     text-align: right;
 }
@@ -28,3 +32,10 @@
 .no-margins {
     margin: 0px;
 }
+
+#question-hr {
+    width: 100%;
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(128, 90, 133), rgba(0, 0, 0, 0));
+  }
