@@ -42,6 +42,5 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.addQuestionSubscription.unsubscribe();
-    console.log('Add Question Component Destroyed');
   }
 }

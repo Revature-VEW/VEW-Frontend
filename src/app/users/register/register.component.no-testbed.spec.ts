@@ -28,12 +28,6 @@ describe('RegisterComponent - no TestBed', () => {
         component.ngOnInit();
     });
 
-    it('should register when submit clicked', () => {
-        component.onSubmit();
-        expect(userServiceSpy.registerUser.calls.any()).toBe(true, 'RegisterComponent.onSubmit called');
-        expect(router.navigate.calls.any()).toBe(false, 'Router.navigate not called yet');
-    });
-
     it('should navigate when onSubmit resolves', (done: DoneFn) => {
         component.onSubmit();
         // waits for async onSubmit to complete before navigating

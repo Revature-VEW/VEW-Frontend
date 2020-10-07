@@ -2,14 +2,18 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { asyncError } from 'src/app/testing/async-observable-helpers';
+import { asyncData, asyncError } from 'src/app/testing/async-observable-helpers';
 
 import { RegisterComponent } from './register.component';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  const expectedUser: User = {
+    userId: 5
+  };
   const registerUserServiceSpy = jasmine.createSpyObj('UserService', ['registerUser']);
   const formBuilder: FormBuilder = new FormBuilder();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -30,6 +34,7 @@ describe('RegisterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
+    registerUserServiceSpy.registerUser.and.returnValue(asyncData(expectedUser));
     fixture.detectChanges();
   });
 
@@ -82,7 +87,7 @@ describe('RegisterComponent', () => {
       status: 406,
       error: 'Test 406 Error'
     };
-    const thrownError = registerUserServiceSpy.registerUser.and.returnValue(asyncError(testError));
+    registerUserServiceSpy.registerUser.and.returnValue(asyncError(testError));
     component.onSubmit();
     expect(registerUserServiceSpy.registerUser).toHaveBeenCalled();
     tick();

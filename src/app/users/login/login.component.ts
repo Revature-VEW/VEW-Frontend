@@ -46,6 +46,5 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.loginUserSubscription.unsubscribe();
     localStorage.setItem('errorMessage', null);
-    console.log('LoginComponent destroyed');
   }
 }
