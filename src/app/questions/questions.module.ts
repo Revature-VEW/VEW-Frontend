@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AngularMaterialModule } from '../angular-material.module';
 import { QuestionsRoutingModule } from './questions-routing.module';
@@ -8,15 +9,20 @@ import { QuestionsRoutingModule } from './questions-routing.module';
 import { QuestionsComponent } from './questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { AnswerComponent } from './answer/answer.component';
+import { AnswerDialogComponent } from './answer/answer-dialog/answer-dialog.component';
+
 
 
 @NgModule({
-  declarations: [QuestionsComponent, AddQuestionComponent, QuestionDetailComponent],
+  declarations: [QuestionsComponent, AddQuestionComponent, QuestionDetailComponent, AnswerComponent, AnswerDialogComponent],
   imports: [
     CommonModule,
     QuestionsRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class QuestionsModule { }
