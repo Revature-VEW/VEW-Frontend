@@ -33,7 +33,7 @@ describe('AddQuestionComponent', () => {
         {provide: QuestionService, useValue: questionServiceSpy},
         {provide: Router, useValue: routerSpy}
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));

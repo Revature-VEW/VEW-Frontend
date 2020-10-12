@@ -2,14 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
-import { Question } from '../models/question';
+import { Answer } from '../models/answer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionService {
-  questionUrl = `${environment.apiUrl}question`;
+export class AnswerService {
+  answerUrl = `${environment.apiUrl}answer`;
   httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -19,11 +18,7 @@ export class QuestionService {
 
   constructor(private httpClient: HttpClient) { }
 
-  addQuestion(questionForm): Observable<Question> {
-    return this.httpClient.post<Question>(this.questionUrl, questionForm, this.httpHead);
-  }
-
-  getQuestionByQuestionId(questionId: number): Observable<Question> {
-    return this.httpClient.get<Question>(`${this.questionUrl}/${questionId}`, this.httpHead);
+  addAnswer(answerForm): Observable<Answer> {
+    return this.httpClient.post<Answer>(this.answerUrl, answerForm, this.httpHead);
   }
 }

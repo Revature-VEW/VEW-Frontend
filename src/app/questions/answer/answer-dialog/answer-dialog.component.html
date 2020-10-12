@@ -1,0 +1,17 @@
+<h1 mat-dialog-title id="title">Answer:</h1>
+<div mat-dialog-content>
+  <p>{{ data.question }}</p>
+  <mat-form-field class="full-width">
+    <mat-label>Answer</mat-label>
+    <textarea   matInput 
+                rows="5" 
+                type="text" 
+                placeholder="Answer Question Here" 
+                [(ngModel)]="data.answer" required>
+    </textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button (click)="onNoClick()" cdkFocusInitial color="primary" id="cancel-button">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="data.answer" color="primary">Ok</button>
+</div>
