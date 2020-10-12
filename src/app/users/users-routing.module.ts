@@ -8,6 +8,11 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 import { UserGuard } from '../guards/user.guard';
 import { CorrectUserGuard } from '../guards/correct-user.guard';
+import { UserQuestionsComponent } from './user-homepage/user-questions/user-questions.component';
+import { UserAnswersComponent } from './user-homepage/user-answers/user-answers.component';
+import { ActivityComponent } from './user-homepage/activity/activity.component';
+import { TechnologiesComponent } from './user-homepage/technologies/technologies.component';
+import { SettingsComponent } from './user-homepage/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -21,7 +26,14 @@ const routes: Routes = [
   {
     path: ':userId',
     component: UserHomepageComponent,
-    canActivate: [UserGuard, CorrectUserGuard]
+    canActivate: [UserGuard, CorrectUserGuard],
+    children: [
+      {path: 'questions', component: UserQuestionsComponent},
+      {path: 'answers', component: UserAnswersComponent},
+      {path: 'activity', component: ActivityComponent},
+      {path: 'technologies', component: TechnologiesComponent},
+      {path: 'settings', component: SettingsComponent}
+    ]
   },
   {
     path: '',
