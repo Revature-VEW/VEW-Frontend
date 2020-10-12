@@ -1,7 +1,6 @@
-import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Question } from 'src/app/models/question';
-import { Answer } from 'src/app/models/answer';
 
 import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 import { Router } from '@angular/router';

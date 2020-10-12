@@ -1,22 +1,19 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, TestComponentRenderer, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AnswerService } from 'src/app/services/answer.service';
 import { asyncData } from 'src/app/testing/async-observable-helpers';
 
 import { AnswerComponent } from './answer.component';
-import { of } from 'rxjs';
-import { Question } from 'src/app/models/question';
 
 describe('AnswerComponent - no User', () => {
   let component: AnswerComponent;
   let fixture: ComponentFixture<AnswerComponent>;
   const answerServiceSpy = jasmine.createSpyObj('AnswerService', ['addAnswer']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-  const formBuilder: FormBuilder = new FormBuilder();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
