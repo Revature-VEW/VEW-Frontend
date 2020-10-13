@@ -1,0 +1,19 @@
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 8px 8px 8px 4px rgba(0, 0, 0, 0.2), 10px 10px 7px 0px rgba(0, 0, 0, 0.14), 10px 10px 0px 0px rgba(0, 0, 0, 0.12);
+}
+
+#card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #6e5673;
+}
+
+#date, #author, #comments {
+    margin: 0px;
+    color: white;
+}
+
+#answer {
+    font-size: 18px;
+    font-weight: 300;
+}

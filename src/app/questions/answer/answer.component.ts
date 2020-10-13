@@ -1,13 +1,15 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Question } from 'src/app/models/question';
-
-import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
-import { AnswerService } from '../../services/answer.service';
+import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
+
+import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
+import { Question } from 'src/app/models/question';
+import { User } from 'src/app/models/user';
+import { AnswerService } from '../../services/answer.service';
+import { QuestionDetailService } from '../../services/question-detail.service';
+
 
 export interface DialogData {
   answer: string;
@@ -31,7 +33,7 @@ export class AnswerComponent implements OnInit, OnDestroy {
   });
 
   constructor(public dialog: MatDialog, private router: Router, private answerService: AnswerService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder, private questionDetailService: QuestionDetailService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('userInfo'));
@@ -53,6 +55,7 @@ export class AnswerComponent implements OnInit, OnDestroy {
         const addAnswerForm = JSON.stringify(this.addAnswer.value);
         this.answerService.addAnswer(addAnswerForm).subscribe(
           response => {
+            this.questionDetailService.addNewAnswerToQuestionDetails(response);
           }
         );
       }

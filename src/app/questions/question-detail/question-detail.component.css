@@ -6,6 +6,7 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 5px;
+    margin-bottom: 30px;
 }
 
 .full-width {
@@ -39,3 +40,7 @@ hr {
     height: 3px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(128, 90, 133), rgba(0, 0, 0, 0));
   }
+
+#bottom-rule {
+    margin-bottom: 30px;
+}

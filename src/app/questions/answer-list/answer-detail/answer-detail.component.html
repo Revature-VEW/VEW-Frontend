@@ -1,0 +1,10 @@
+<mat-card id="card">
+    <mat-card-header>
+        <mat-card-title id="answer">{{ answer.answer }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-subtitle id="subtitle">
+        <p align="right" id="date">Answered: {{ answer.creationDate | date }}</p>
+        <p align="right" id="author">By: {{ answer.user.firstName }} {{ answer.user.lastName }}</p>
+        <p align="center" id="comments">Comments &#8659;</p>
+    </mat-card-subtitle>
+</mat-card>

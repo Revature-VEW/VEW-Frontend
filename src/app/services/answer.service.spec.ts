@@ -3,10 +3,12 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { AnswerService } from './answer.service';
 import { environment } from 'src/environments/environment';
+import { getTestAnswers } from '../testing/test-answer';
 
 describe('AnswerService', () => {
   let service: AnswerService;
   let httpMock: HttpTestingController;
+  const mockAnswers = getTestAnswers();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -25,21 +27,7 @@ describe('AnswerService', () => {
   });
 
   it('should add answer', () => {
-    const mockAnswer = {
-      answerId: 1,
-      answer: 'General purpose programming language',
-      totalUpvotes: 0,
-      totalDownvotes: 0,
-      question: {
-        questionId: 2,
-        question: 'What is Java?'
-      },
-      user: {
-        userId: 5,
-        firstName: 'Test',
-        lastName: 'One'
-      }
-    };
+    const mockAnswer = mockAnswers[0];
 
     service.addAnswer('').subscribe(
       returnedAnswer => {
@@ -50,5 +38,19 @@ describe('AnswerService', () => {
     const req = httpMock.expectOne(`${environment.apiUrl}answer`);
     expect(req.request.method).toEqual('POST');
     req.flush(mockAnswer);
+  });
+
+  it('should find all answers by question', () => {
+    const mockAnswersForReturn = mockAnswers;
+
+    service.getAnswersByQuestionId(13).subscribe(
+      returnedAnswers =>{
+        expect(returnedAnswers.length).toEqual(5);
+      }
+    );
+
+    const req = httpMock.expectOne(`${environment.apiUrl}answer/question/13`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockAnswersForReturn);
   });
 });

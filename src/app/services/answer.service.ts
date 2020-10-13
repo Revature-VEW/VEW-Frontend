@@ -21,4 +21,8 @@ export class AnswerService {
   addAnswer(answerForm): Observable<Answer> {
     return this.httpClient.post<Answer>(this.answerUrl, answerForm, this.httpHead);
   }
+
+  getAnswersByQuestionId(questionId: number): Observable<Answer[]> {
+    return this.httpClient.get<Answer[]>(`${this.answerUrl}/question/${questionId}`, this.httpHead);
+  }
 }
