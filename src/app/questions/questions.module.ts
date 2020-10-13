@@ -11,11 +11,20 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { AnswerComponent } from './answer/answer.component';
 import { AnswerDialogComponent } from './answer/answer-dialog/answer-dialog.component';
+import { AnswerListComponent } from './answer-list/answer-list.component';
+import { AnswerDetailComponent } from './answer-list/answer-detail/answer-detail.component';
 
 
 
 @NgModule({
-  declarations: [QuestionsComponent, AddQuestionComponent, QuestionDetailComponent, AnswerComponent, AnswerDialogComponent],
+  declarations: [
+    QuestionsComponent,
+    AddQuestionComponent,
+    QuestionDetailComponent,
+    AnswerComponent,
+    AnswerDialogComponent,
+    AnswerListComponent,
+    AnswerDetailComponent],
   imports: [
     CommonModule,
     QuestionsRoutingModule,

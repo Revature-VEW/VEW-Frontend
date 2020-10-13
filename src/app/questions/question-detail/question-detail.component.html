@@ -29,11 +29,9 @@
     <mat-card-actions align="right">
         <button mat-raised-button color="primary">Comment</button>
     </mat-card-actions>
-    <hr>
-    <mat-card-content>
-        <p>
-            Answer One
-        </p>
+    <hr id="bottom-rule">
+    <mat-card-content id="answer-list">
+        <app-answer-list [question]="currentQuestion"></app-answer-list>
     </mat-card-content>
     <mat-card-actions align="right">
         <app-answer [question]="currentQuestion"></app-answer>
